@@ -1,5 +1,4 @@
 ; $Id$
 name = CiviCRM Theme
 description = define alternate themes for CiviCRM on the Drupal admin theme page
-version = "$Name$"
 dependencies = civicrm
