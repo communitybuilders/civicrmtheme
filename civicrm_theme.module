@@ -1,10 +1,8 @@
 <?php
 // $Id$
 
-function civicrm_theme_menu($may_cache) {
-  if ($may_cache) {
-  }
-  elseif (arg(0) == 'civicrm') {
+function civicrm_theme_init() {
+  if (arg(0) == 'civicrm') {
     global $custom_theme;
     $theme_var = arg(1) == 'admin' ? 'civicrm_admin_theme' : 'civicrm_theme';
     if (($custom_theme = variable_get($theme_var, '0')) != '0') {
@@ -15,8 +13,8 @@ function civicrm_theme_menu($may_cache) {
   return array();
 }
 
-function civicrm_form_alter($form_id, &$form) {
-  if ($form_id == 'system_admin_theme_settings') {
+function civicrm_form_alter(&$form, $form_state) {
+  if ($form['form_id'] == 'system_admin_theme_settings') {
     $newform['civicrm_admin_theme'] = array(
       '#type' => 'select',
       '#options' => $form['admin_theme']['#options'],
