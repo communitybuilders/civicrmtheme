@@ -2,5 +2,5 @@
 name = CiviCRM Theme
 description = define alternate themes for CiviCRM on the Drupal admin theme page
 dependencies[] = civicrm
-package = "CiviCRM"
-core = "6.x"
+package = CiviCRM
+core = 6.x
