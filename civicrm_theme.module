@@ -13,8 +13,8 @@ function civicrm_theme_init() {
   return array();
 }
 
-function civicrm_form_alter(&$form, $form_state) {
-  if ($form['form_id'] == 'system_admin_theme_settings') {
+function civicrm_form_alter(&$form, $form_state, $form_id) {
+  if ($form_id == 'system_admin_theme_settings') {
     $newform['civicrm_admin_theme'] = array(
       '#type' => 'select',
       '#options' => $form['admin_theme']['#options'],
