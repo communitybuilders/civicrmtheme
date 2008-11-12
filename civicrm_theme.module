@@ -4,7 +4,17 @@
 function civicrm_theme_init() {
   if (arg(0) == 'civicrm') {
     global $custom_theme;
-    $theme_var = arg(1) == 'admin' ? 'civicrm_admin_theme' : 'civicrm_theme';
+    switch (arg(1)) {
+      case 'admin':
+        $theme_var = 'civicrm_admin_theme';
+        break;
+      case 'event':
+        $theme_var = 'civicrm_event_theme';
+        break;
+      default:
+        $theme_var = 'civicrm_theme';
+        break;
+    }
     if (($custom_theme = variable_get($theme_var, '0')) != '0') {
       $path = drupal_get_path('module', 'system');
       drupal_add_css($path .'/admin.css', 'module');
@@ -21,6 +31,13 @@ function civicrm_form_alter(&$form, $form_state, $form_id) {
       '#title' => t('CiviCRM Administration theme'),
       '#description' => t('Choose which theme the CiviCRM administration pages should display in.'),
       '#default_value' => variable_get('civicrm_admin_theme', ''),
+    );
+    $newform['civicrm_event_theme'] = array(
+      '#type' => 'select',
+      '#options' => $form['admin_theme']['#options'],
+      '#title' => t('CiviCRM Event theme'),
+      '#description' => t('Choose which theme the CiviCRM event pages should display in.'),
+      '#default_value' => variable_get('civicrm_event_theme', ''),
     );
     $newform['civicrm_theme'] = array(
       '#type' => 'select',
