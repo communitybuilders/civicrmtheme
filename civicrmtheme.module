@@ -1,7 +1,7 @@
 <?php
 // $Id$
 
-function civicrm_theme_init() {
+function civicrmtheme_init() {
   if (arg(0) == 'civicrm') {
     global $custom_theme;
     switch (arg(1)) {
@@ -14,7 +14,7 @@ function civicrm_theme_init() {
         }
         break;
       default:
-        $theme_var = 'civicrm_theme';
+        $theme_var = 'civicrmtheme';
         break;
     }
     if ($theme_var && ($custom_theme = variable_get($theme_var, '0')) != '0') {
@@ -25,7 +25,7 @@ function civicrm_theme_init() {
   return array();
 }
 
-function civicrm_form_alter(&$form, $form_state, $form_id) {
+function civicrmtheme_form_alter(&$form, $form_state, $form_id) {
   if ($form_id == 'system_admin_theme_settings') {
     $newform['civicrm_admin_theme'] = array(
       '#type' => 'select',
@@ -34,12 +34,12 @@ function civicrm_form_alter(&$form, $form_state, $form_id) {
       '#description' => t('Choose which theme the CiviCRM administration pages should display in.'),
       '#default_value' => variable_get('civicrm_admin_theme', ''),
     );
-    $newform['civicrm_theme'] = array(
+    $newform['civicrmtheme'] = array(
       '#type' => 'select',
       '#options' => $form['admin_theme']['#options'],
       '#title' => t('CiviCRM User theme'),
       '#description' => t('Choose which theme the CiviCRM user pages should display in.'),
-      '#default_value' => variable_get('civicrm_theme', ''),
+      '#default_value' => variable_get('civicrmtheme', ''),
     );
     $form = array_merge(array_slice($form, 0, 1), $newform, array_slice($form, 1));
   }
