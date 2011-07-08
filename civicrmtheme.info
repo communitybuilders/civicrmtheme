@@ -4,10 +4,5 @@ description = define alternate themes for CiviCRM on the Drupal admin theme page
 dependencies[] = civicrm
 package = CiviCRM
 core = 7.x
-
-; Information added by drupal.org packaging script on 2011-02-25
-version = "6.x-1.x-dev"
-core = "6.x"
+version = "7.x-0.x"
 project = "civicrm_theme"
-datestamp = "1298618965"
-
